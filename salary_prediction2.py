@@ -1,5 +1,4 @@
-# This file is a copy of the code run on google colab
-# !pip install category-encoders
+!pip install category-encoders
 
 import time
 import numpy as np
@@ -137,8 +136,8 @@ def predict_data(model, dataset, featureCol, outputFile):
     scaler.fit(X)
     X = scaler.transform(X)
 
-    predictihttps://github.com/ = model.predict(X).flatten()
-    # predichttps://github.com/on = np.expm1(prediction)
+    prediction = model.predict(X).flatten()
+    # prediction = np.expm1(prediction)
     result = pd.DataFrame({'Instance':instanceIds, 'Total Yearly Income [EUR]':prediction})
     result.to_csv(outputFile,index=False)
 
@@ -245,11 +244,11 @@ def main():
     hist['epoch'] = history.epoch
     print(hist.tail())
     
-    # loss, mae, mse = model.evaluate(Xtest, ytest, verbose=2)
-    ypred = model.predict(Xtest).flatten()
-    ypred = np.expm1(ypred)
-    ytestInv = np.expm1(ytest)
-    mae = mean_absolute_error(ytestInv, ypred)
+    # ypred = model.predict(Xtest).flatten()
+    # ypred = np.expm1(ypred)
+    # ytestInv = np.expm1(ytest)
+    # mae = mean_absolute_error(ytestInv, ypred)
+    loss, mae, mse = model.evaluate(Xtest, ytest, verbose=2)
     print("Testing set Mean Abs Error: {:5.2f}".format(mae))
     date_time_stamp = time.strftime('%Y%m%d%H%M%S')  #in the format YYYYMMDDHHMMSS
     predict_data(model,testDataset,featureColumns, OUTPUT_FOLDER + 'tfOut-' + date_time_stamp + "-" + str(int(mae)) + ".csv")
