@@ -1,4 +1,11 @@
 # tcd-group-competition-team24
+
+Team24
+Dhruv Ishpuniani
+Patrick Jennings
+Xuming Xiu
+
+
 Team24 submission code for kaggle salary prediction group competition
 
 The code is run on colab.google and uses a neural network with dropout and regularization.
